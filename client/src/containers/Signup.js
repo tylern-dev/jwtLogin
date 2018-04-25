@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 
 import Error from '../components/Error';
 
+import withAuth from '../hoc/AuthHOC';
 
 const Signup = ({ signUpUser, changeValue, error }) => (
   <Fragment>
@@ -29,4 +30,4 @@ Signup.propTypes = {
   changeValue: PropTypes.func.isRequired,
   error: PropTypes.string,
 };
-export default (Signup);
+export default withAuth(Signup);

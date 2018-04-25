@@ -4,7 +4,7 @@ import Router from './components/router/Router';
 
 class App extends React.Component {
   state = {
-    isAuthenticated: true,
+    user: {},
   }
 
 
@@ -13,12 +13,9 @@ class App extends React.Component {
     return (
 
       <Fragment>
-        <Navbar auth={this.state.isAuthenticated} handleLogout={this.handleLogout} />
+        <Navbar auth={this.state.isAuthenticated} />
         <Router />
-
       </Fragment>
-
-
     );
   }
 }
