@@ -3,11 +3,8 @@ import PropTypes from 'prop-types';
 import Error from '../components/Error';
 
 
-import withAuth from '../helper/AuthHOC';
-
 const Login = ({ submitUser, changeValue, error }) => (
   <Fragment>
-
     <h1>Login Page</h1>
     <form onSubmit={submitUser}>
       <label htmlFor="email">Email:
@@ -29,4 +26,4 @@ Login.propTypes = {
 };
 
 
-export default withAuth(Login);
+export default (Login);
