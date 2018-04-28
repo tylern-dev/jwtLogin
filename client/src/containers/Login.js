@@ -4,10 +4,10 @@ import Error from '../components/Error';
 
 import withAuth from '../hoc/AuthHOC';
 
-const Login = ({ submitUser, changeValue, error }) => (
+const Login = ({ loginUser, changeValue, error }) => (
   <Fragment>
     <h1>Login Page</h1>
-    <form onSubmit={submitUser}>
+    <form onSubmit={loginUser}>
       <label htmlFor="email">Email:
         <input id="email" type="text" name="email" onChange={changeValue} />
       </label>
@@ -21,7 +21,7 @@ const Login = ({ submitUser, changeValue, error }) => (
 );
 
 Login.propTypes = {
-  submitUser: PropTypes.func.isRequired,
+  loginUser: PropTypes.func.isRequired,
   changeValue: PropTypes.func.isRequired,
   error: PropTypes.string,
 };
