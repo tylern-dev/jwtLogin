@@ -1,4 +1,5 @@
 import React, { Fragment } from 'react';
+import './App.css';
 
 
 import Navbar from './components/navbar/Navbar';
@@ -8,6 +9,7 @@ class App extends React.Component {
   state={
     isAuthenticated: false,
   }
+
 
   changeAuth = () => {
     this.setState({
