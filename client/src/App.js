@@ -12,8 +12,9 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    if (this.Auth.getToken) {
-      this.Auth.tokenCheck((res) => {
+    const token = this.Auth.getToken;
+    if (token) {
+      this.Auth.tokenCheck(token, (res) => {
         if (res) {
           this.setState({ isAuthenticated: true });
         }

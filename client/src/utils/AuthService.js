@@ -31,18 +31,26 @@ export default class AuthService {
     localStorage.clear();
   }
 
-  tokenCheck = (cb) => {
+  tokenCheck = (token, cb) => {
     axios({
       method: 'post',
       url: '/apiToken/verifyToken',
-      headers: { Authorization: `Bearer ${this.getToken}` },
+      headers: { Authorization: `Bearer ${token}` },
     })
       .then((res) => {
         if (res.status === 200) {
           cb(true);
+        } else {
+          cb(false);
         }
       })
-      .catch(err => console.log('PrivateRoute Err', err));
+      .catch((err) => {
+        console.log('PrivateRoute Err', err);
+        if (err) {
+          cb(false);
+        }
+      },
+      );
   };
 
   setToken = (tokenId) => {
