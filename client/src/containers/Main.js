@@ -5,6 +5,7 @@ import Home from './Home';
 import Signup from './Signup';
 import Login from './Login';
 import Dashboard from './Dashboard';
+import Profile from './Profile';
 import NotFound from './NotFound';
 
 const Main = ({ changeAuth, isAuth }) => (
@@ -13,7 +14,8 @@ const Main = ({ changeAuth, isAuth }) => (
     <Route exact path="/" render={prop => <Home {...prop} />} />
     <Route path="/signup" render={prop => <Signup {...prop} updateIsLoggedIn={this.updateIsLoggedIn} />} />
     <Route path="/login" render={prop => <Login {...prop} updateIsLoggedIn={this.updateIsLoggedIn} changeAuth={changeAuth} />} />
-    <PrivateRoute component={Dashboard} isAuth={isAuth} />
+    <PrivateRoute exact path="/dashboard" component={Dashboard} isAuth={isAuth} />
+    <PrivateRoute exact path="/profile" component={Profile} isAuth={isAuth} />
     <Route component={NotFound} />
   </Switch>
 );

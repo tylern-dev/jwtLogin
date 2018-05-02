@@ -2,7 +2,7 @@ import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import Error from '../components/Error';
 
-import withAuth from '../hoc/AuthHOC';
+import loginAuth from '../hoc/loginHOC';
 
 const Login = ({ loginUser, changeValue, error }) => (
   <Fragment>
@@ -27,4 +27,4 @@ Login.propTypes = {
 };
 
 
-export default withAuth(Login);
+export default loginAuth(Login);

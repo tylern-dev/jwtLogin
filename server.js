@@ -28,6 +28,10 @@ app.get('/api/hello', (req, res) => {
   res.send({ express: 'Hello From my Express' });
 });
 
+app.get('*', (req, res) => {
+  res.sendFile(path.resolve(__dirname, '/client/public/index.html'));
+})
+
 
 app.listen(PORT, ()=> {
   console.log(`App running on port ${PORT}`)
