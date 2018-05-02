@@ -2,7 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import AuthService from '../utils/AuthService';
 
-export default function withAuth(AuthComponent) {
+
+export default function loginAuth(AuthComponent) {
   return class AuthWrapped extends React.Component {
     static propTypes = {
       changeAuth: PropTypes.func,
@@ -27,9 +28,10 @@ export default function withAuth(AuthComponent) {
         console.log('AUTH RES', res);
         if (res === 200) {
           this.props.changeAuth();
-          this.props.history.replace('/');
+          this.props.history.push('/dashboard');
         }
       });
+      this.setState({ redirectToRefer: true });
     };
 
     signUpUser = (event) => {
