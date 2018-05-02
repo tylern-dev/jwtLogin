@@ -20,25 +20,22 @@ class PrivateRoute extends React.Component {
 
   // working on trying to verify token on server side
 
-  // checkLoggedIn = () => {
-  //   this.Auth.tokenCheck((result) => {
-  //     if (result) {
-  //       this.setState({ loggedIn: true, isLoading: false });
-  //     } else {
-  //       this.setState({ shouldRedirect: true, isLoading: false });
-  //     }
-  //   });
-  // }
-
   checkLoggedIn = () => {
     const token = localStorage.getItem('tkid');
-    console.log(token);
-    if (token) {
-      this.setState({ loggedIn: true, isLoading: false });
-    } else {
+
+    if (!token) {
       this.setState({ shouldRedirect: true, isLoading: false });
+    } else {
+      this.Auth.tokenCheck(token, (result) => {
+        if (result) {
+          this.setState({ loggedIn: true, isLoading: false });
+        } else {
+          this.setState({ shouldRedirect: true, isLoading: false });
+        }
+      });
     }
   }
+
 
   render() {
     // need isAuth in order to use the redirect from login

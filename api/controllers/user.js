@@ -27,8 +27,9 @@ exports.users_signup = (req, res, next) => {
               const token = jwt.sign({
                 id: result._id,
                 name: result.firstName,
-                email: result.email
-              }, process.env.JWT_SECRET);
+                email: result.email,
+                role: result.role
+              }, {expiresIn: '24h'}, process.env.JWT_SECRET);
 
               res.status(201).json({ message: 'User created', ssid: token });
             })
@@ -56,7 +57,12 @@ exports.user_login = (req, res, next) => {
           return res.status(401).json({ message: "Invalid Username or Password" });
         }
         if (result) {
-          jwt.sign({ _id: user._id, email: user.email, role:user.role }, process.env.JWT_SECRET,  (err, token) => {
+          jwt.sign(
+            { _id: user._id, email: user.email, role:user.role },
+            process.env.JWT_SECRET,
+            {expiresIn: '24h'},
+            (err, token) => {
+
             return res.status(200).json({
               message: 'Auth Successful',
               ssid: token
